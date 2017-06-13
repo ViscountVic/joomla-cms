@@ -345,6 +345,15 @@ class FieldsHelper
 				Joomla.loadingLayer('show');
 				var cat = jQuery(element);
 				if (cat.val() == '" . $assignedCatids . "')return;
+				var elements = document.querySelectorAll('.field-calendar');
+                		for (var i = 0; i < elements.length; i++) {
+				    var calendarfield  = elements[i],
+					instance = calendarfield._joomlaCalendar;
+
+				    if (instance) {
+					instance.setAltValue();
+				    }
+				}
 				jQuery('input[name=task]').val('field.storeform');
 				element.form.action='" . $uri . "';
 				element.form.submit();
